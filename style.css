@@ -14,6 +14,7 @@ h3 {
 }
 
 .intro {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -22,25 +23,62 @@ h3 {
     gap: 2rem;
     flex-wrap: wrap;
     padding: 0 20px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.intro::before,
+.intro::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center, #00d4ff, #007cf0);
+    opacity: 0.3;
+    border-radius: 50%;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+}
+.intro::before {
+    top: -100px;
+    left: -100px;
+}
+.intro::after {
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(20px) scale(1.05);
+    }
 }
 
 .about_me {
-    background-color: #e5dcdc;
+    position: relative;
+    background-color: rgba(229, 220, 220,0.68);
     font-size: 20px;
     font-weight: 500;
     padding: 20px;
     border-radius: 10px;
-    max-width: 600px;
+    width: 60%;
     height: auto;
+    z-index: 2;
 }
 
 .moon {
+    position: relative;
     height: 250px;
     width: 250px;
     background-image: url("./icons/dp_1.jpg");
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+    z-index: 2;
 }
 .experience {
     padding: 10px;
