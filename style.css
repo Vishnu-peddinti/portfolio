@@ -181,6 +181,9 @@ h3 {
         width: 40px;
         height: 40px;
     }
+    .scroll-hint {
+        animation: scrollHint 1.5s ease-out infinite;
+    }
 }
 
 
@@ -194,6 +197,9 @@ h3 {
         width: auto;
         height: auto;
         display: block;
+    }
+    .scroll-hint {
+        animation: scrollHint 1.5s ease-out infinite;
     }
 }
 
@@ -360,6 +366,18 @@ hr {
     animation-range: entry 0%;
 }
 
+.projects::-webkit-scrollbar {
+    height: 8px;
+}
+.projects::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+.projects::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+
 .project-card {
     background-color: #fff;
     border-radius: 10px;
@@ -373,6 +391,13 @@ hr {
     /* scroll-snap-align: start; */
     flex-shrink: 0;
     transition: transform 0.3s ease;
+}
+
+@keyframes scrollHint {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(20px); }
+    60% { transform: translateX(0); }
+    100% { transform: translateX(0); }
 }
 
 .project-card img {

@@ -9,16 +9,29 @@ function toggleTheme() {
     }
 }
 window.addEventListener("DOMContentLoaded", () => {
-const movableDiv = document.querySelector('.moon');
-const follower = document.querySelector('.follow');
-document.addEventListener('mousemove', (event) => {
-    const mouseX = event.pageX;
-    const mouseY = event.pageY;
+    const movableDiv = document.querySelector('.moon');
+    const follower = document.querySelector('.follow');
+    document.addEventListener('mousemove', (event) => {
+        const mouseX = event.pageX;
+        const mouseY = event.pageY;
 
-    const offsetX = (mouseX / window.innerWidth - 0.5) * 20;
-    const offsetY = (mouseY / window.innerHeight - 0.5) * 20;
+        const offsetX = (mouseX / window.innerWidth - 0.5) * 20;
+        const offsetY = (mouseY / window.innerHeight - 0.5) * 20;
 
-    movableDiv.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    follower.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    follower.style.opacity = 1;
-})});
+        movableDiv.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        follower.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        follower.style.opacity = 1;
+    });
+    const projectSection = document.querySelector('.projects');
+    const firstCard = document.querySelector('.project-card.scroll-hint');
+
+    let hintRemoved = false;
+
+    projectSection.addEventListener('scroll', () => {
+        if (!hintRemoved && projectSection.scrollLeft > 0) {
+            firstCard.classList.remove('scroll-hint');
+            hintRemoved = true;
+        }
+    });
+
+});
